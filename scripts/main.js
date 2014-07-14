@@ -4,7 +4,7 @@ require.config({
 	paths: {
 	    jQuery: "../kendo/js/jquery.min",
 		kendo: "../kendo/js/kendo.mobile.min",
-        kendoIndexedListView: "../kendo.indexedlistview"
+        kendoIndexedListView: "../kendo/js/kendo.indexedlistview"
 	},
     shim: {
         jQuery: {
