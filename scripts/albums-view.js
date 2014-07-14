@@ -3,8 +3,7 @@ define(["kendo", "data", "utils", "cart", "albums"], function (kendo, data, util
         var listViewElement = $("#albums-listview");
         var existingListView = listViewElement.data().kendoMobileListView;
         var viewModel = kendo.observable($.extend({
-            albums: data.albumsList,
-             beersD: data.beersD
+            albums: data.albumsList
         }, albums.baseAlbumViewModel));
 
         if(existingListView) {
@@ -16,15 +15,6 @@ define(["kendo", "data", "utils", "cart", "albums"], function (kendo, data, util
 
     return {
         show: function (e) {
-            //alert(e.view.params.value);
-            /*data.beersD.filter({
-                field: "B_Id",
-                operator: "eq",
-                value: parseInt(e.view.params.value)
-            });
-
-            data.beersD.read();*/
-            
             var filter = utils.parseQueryStringToObject();
             utils.setViewTitle(e.sender.element, filter.title);
             utils.scrollViewToTop(e.sender.element);

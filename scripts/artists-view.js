@@ -1,9 +1,11 @@
 define(["kendo", "data"], function (kendo, data) {
     return {
+        show: function(e){
+            setTimeout(function () {$(".km-indexedlistview").data("kendoMobileIndexedListView").refresh();}, 1);        
+        },
         viewModel: kendo.observable({
             artists: data.artistsList,
-            beers: data.beers,
-            beersD: data.beersD2
+            beersX: data.beersList
         })
     };
 });
