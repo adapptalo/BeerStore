@@ -6,12 +6,12 @@
     xmlns:gap="http://phonegap.com/ns/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <name>Test App</name>
+    <name>KMS</name>
     <description>
         The PhoneGap Hello World sample, extended with our plugins, so you have nice copy-pasteable code for your own app.
     </description>
-    <author email="info@x-services.nl" href="http://www.x-services.nl">
-        X-Services, Netherlands
+    <author email="adapptalo@gmail.com" href="http://www.adapptalo.com">
+        ADAPPTALO, Barcelona
     </author>
 
     <gap:platform name="ios"/>

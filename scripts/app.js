@@ -10,7 +10,7 @@ define(["jQuery", "kendo", "kendoIndexedListView", "data", "config", "utils", "c
 
         var kendoApp = new kendo.mobile.Application(document.body, {
             transition: "fade",
-            initial: "about-view",
+            initial: "genres-view",
             loading: '<h1 class="loading-message">Loading...</h1>'
         });
         utils.init(kendoApp);

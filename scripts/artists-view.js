@@ -1,7 +1,9 @@
 define(["kendo", "data"], function (kendo, data) {
     return {
         show: function(e){
-            setTimeout(function () {$(".km-indexedlistview").data("kendoMobileIndexedListView").refresh();}, 1);        
+            setTimeout(function() {
+                    $(window).trigger('resize'); 
+                }, 300);             
         },
         viewModel: kendo.observable({
             artists: data.artistsList,

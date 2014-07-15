@@ -63,7 +63,11 @@ define(["jQuery", "kendo", "config", "utils"], function ($, kendo, config, utils
                                 });
                                 return data;
                         }
-                }
+                },
+                index:1,
+                requestStart: function () { if (this.page() === 1) { utils.showLoading(); }},
+                requestEnd: function () { if (this.page() === 1) { utils.hideLoading(); }},
+                error: function () { utils.hideLoading(); utils.showError("There was an error loading the data from the server. Please close the app and try again."); }
         }),
         
         beersList: new kendo.data.DataSource({
@@ -79,7 +83,10 @@ define(["jQuery", "kendo", "config", "utils"], function ($, kendo, config, utils
                                 });
                                 return data;
                         }
-                }
+                },
+                requestStart: function () { if (this.page() === 1) { utils.showLoading(); }},
+                requestEnd: function () { if (this.page() === 1) { utils.hideLoading(); }},
+                error: function () { utils.hideLoading(); utils.showError("There was an error loading the data from the server. Please close the app and try again."); }
         }),
         
 
