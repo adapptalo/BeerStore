@@ -573,7 +573,10 @@
                 /*setTimeout(function() {
                     $(window).trigger('resize'); 
                 }, 1);*/
-                $(".km-indexedlistview").trigger('resize');
+                setTimeout(function() {
+                   $(".km-indexedlistview").trigger('resize');
+                }, 1);
+                
             }
         </script>
         <script src="scripts/socialsharing-plugin-demo.js"></script>
