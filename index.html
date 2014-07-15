@@ -569,15 +569,18 @@
 
         <!-- Scripts -->
         <script>
-            function showHomeView(e) {         
-                setTimeout(function() {
+           function showHomeView(e) {       
+                setTimeout(function () {
+                        $(".km-indexedlistview").data("kendoMobileIndexedListView").refresh();
+                }, 1); 
+                /*setTimeout(function() {
                     $(window).trigger('resize'); 
-                }, 1);               
+                }, 1); */              
             }
         </script>
-        
+        <script src="scripts/socialsharing-plugin-demo.js"></script>
+   
         <script data-main="scripts/main.js" src="scripts/require.js"></script>
-  <script src="scripts/socialsharing-plugin-demo.js"></script>
-    
+   
     </body>
 </html>
