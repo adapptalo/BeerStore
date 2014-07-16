@@ -161,16 +161,7 @@
                         <span class="added" data-bind="visible: ordered">Item added to wishlist #= data.ordered # times.</span>                        
                     </a>
         </script>
-        <div data-role="view" data-title="View Title" id="details" data-init="showDetailsView" style="display: none;" data-transition="overlay:up">
-            <header data-role="header">
-                <div id="fav-list-navbar" data-role="navbar">
-                    <a class="nav-button" data-align="left" href="#genres-view" data-transition="overlay:up reverse" data-role="backbutton" >Back</a>
-                    <span data-role="view-title"></span>
-                </div>
-            </header>
-            <button class="details-link km-widget km-button" style="float:right" onclick="socialsharingDemo()">SocialSharing</button>
-        </div>
-        
+                
         <div data-role="view" id="albums-view" data-layout="base-layout" data-model="app.albumsView.viewModel" data-show="app.albumsView.show" data-transition="slide:left" style="display: none;">
             <header data-role="header">
                 <div data-role="navbar">
@@ -180,7 +171,6 @@
             </header>
 
             <ul id="albums-listview" data-role="listview" data-bind="source: albums" data-template="album2-list-template" data-style="inset"></ul>
-            <button onclick="socialsharingDemo()">SocialSharing</button>
             
         </div>
 
@@ -473,12 +463,11 @@
 
         <script id="album2-list-template" type="text/x-kendo-template">
             <img class="album-art"  src="Images/beers/#=IMAGEN#" />  
-            <div class="album-cart" data-role="button" data-bind="click: onAddToCart"><span data-bind="text: qtyInCart, attr: {class: buttonClasses}"></span><span class="km-icon km-cart"></span></div>
-             <h1 class="album-title">${CERVESERA}</h1>
+            <h1 class="album-title">${CERVESERA}</h1>
             <h2 class="album-artist">${CERVESA}</h2>
             <span class="album-price">${DESCRIPCIO}</span>
-            <button style="float:right" onclick="socialsharingDemo()">SocialSharingxxx</button>
-           
+            <div class="album-cart" data-role="button" data-bind="click: onAddToCart"><span data-bind="text: qtyInCart, attr: {class: buttonClasses}"></span><span class="km-icon km-cart"></span></div>
+            <button class="details-link km-widget km-button" style="float:left" data-bind="click:onSocial">SocialSharing</button>            
         </script>
         
         <script id="artist-filter-template" type="text/x-kendo-template">
@@ -513,18 +502,6 @@
 
 
         <!-- Scripts -->
-        <script>
-       
-            function showDetailsView(e) {
-                alert(JSON.stringify(app.artistsView.viewModel.beersX));
-                var id = parseInt(e.view.params.B_Id);
-                   item = app.artistsView.viewModel.beersX.get(id);
-                   //console.log(item);
-                    //alert(item);
-                //viewModel.set("currentItem", item);
-
-            }
-        </script>
         <script src="scripts/socialsharing-plugin-demo.js"></script>
    
         <script data-main="scripts/main.js" src="scripts/require.js"></script>

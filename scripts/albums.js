@@ -1,18 +1,22 @@
 define(["kendo", "cart", "config"], function (kendo, cart, config) {
     return {
         baseAlbumViewModel: {
+            onSocial:function(e){
+                 var album = e.data;
+                 //alert(JSON.stringify(album));
+                 socialsharingDemo();
+            },
             onAddToCart: function (clickEvt) {
-                alert("ere");
                 var album = clickEvt.data;
                 cart.add(album);
 
                 // force refresh of data bindings.
-                var aid = album.get("AlbumId");
-                album.set("AlbumId", -1);
-                album.set("AlbumId", aid);
+                var aid = album.get("B_Id");
+                album.set("B_Id", -1);
+                album.set("B_Id", aid);
             },
             albumPrice: function (album) {
-                return kendo.toString(parseFloat(album.get("Price")), "c");
+                return kendo.toString(parseFloat(album.get("ESTIL")), "c");
             },
             albumArtUrl: function (album) {
                 return config.serverUrl + album.get("AlbumArtUrl");
