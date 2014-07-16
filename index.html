@@ -137,7 +137,7 @@
          
         <!-- Home Views -->
 
-        <div data-role="view" id="genres-view" data-layout="home-layout" data-url="/"  data-title="Albums" data-show="showHomeView" data-model="app.artistsView.viewModel" class="km-insetcontent" style="display: none;">
+        <div data-role="view" id="genres-view" data-layout="home-layout" data-title="Albums" data-init="showHomeView" data-model="app.artistsView.viewModel" class="km-insetcontent" style="display: none;">
             <ul id="custom-listview" data-role="indexedlistview" data-bind="source: beersX" data-template="beerTemplate" data-fixed-headers="true"></ul>
         </div>
         
@@ -191,30 +191,7 @@
             </div>
         </div>
 
-        <div data-role="layout" data-id="home-layout" data-init="app.homeLayout.init" data-show="app.homeLayout.show" data-platform="android">
-            <div data-role="header">
-                <div data-role="navbar">
-                    <div class="app-icon" data-align="left"></div>
-                    <span data-role="view-title"></span>
-                    <div data-align="right" class="action-buttons">
-                        <a data-role="button" href="#search-view" data-icon="search"></a>
-                        <a data-role="button" href="#cart-view" data-icon="cart"></a>
-                        <a data-role="button" href="#popover-action-overflow" data-rel="popover" data-icon="action-overflow"></a>
-                    </div>
-                </div>
-            </div>
-
-            <div data-role="popover" id="popover-action-overflow" data-popup='{"height": 110, "width": 125}'>
-                <div data-role="view" data-title="People">
-                    <ul data-role="listview" data-click="app.homeLayout.navigate">
-                        <li data-target="#account-view">Account</li>
-                        <li data-target="#about-view">About</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-
+        
         <!-- Search Views -->
 
         <div data-role="view" id="search-view" data-layout="search-layout" data-title="Search" data-init="app.searchView.init" data-show="app.searchView.show" style="display: none;">
@@ -241,19 +218,6 @@
                 </div>
             </div>
         </div>
-
-        <div data-role="layout" data-id="search-layout" data-platform="android" data-show="app.baseLayout.show">
-            <header data-role="header">
-                <div data-role="navbar">
-                    <a class="nav-button" data-align="left" data-role="backbutton"></a>
-                    <input type="text" class="search-text" placeholder="Album title or artist" />
-                    <div data-align="right" class="action-buttons">
-                        <a data-role="button" data-icon="search" data-click="app.searchView.submitSearch"></a>
-                    </div>
-                </div>
-            </header>
-        </div>
-
 
         <!-- Cart Checkout Views -->
 
@@ -356,19 +320,6 @@
             </div>
         </div>
 
-        <div data-role="layout" data-id="checkout-complete-layout" data-show="app.baseLayout.show" data-platform="android">
-            <header data-role="header">
-                <div data-role="navbar">
-                    <div class="app-icon" data-align="left"></div>
-                    <span data-role="view-title"></span>
-                    <div data-align="right" class="action-buttons">
-                        <a data-role="button" href="#home-view" data-icon="home"></a>
-                    </div>
-                </div>
-            </header>
-        </div>
-
-
         <!-- Account Views -->
 
         <div data-role="view" id="account-view" data-layout="account-layout" data-title="Account" style="display: none;" data-model="app.accountView.viewModel" data-before-show="app.accountView.beforeShow" data-show="app.accountView.accountViewShow">
@@ -422,20 +373,6 @@
             </div>
         </div>
 
-        <div data-role="layout" data-id="account-layout" data-show="app.accountView.layoutShow" data-platform="android">
-            <header data-role="header">
-                <div data-role="navbar">
-                    <a class="nav-button" data-align="left" data-role="backbutton"></a>
-                    <span data-role="view-title"></span>
-                    <div data-align="right" class="action-buttons">
-                        <a data-role="button" href="#popover-account-overflow" data-rel="popover" data-icon="action-overflow"></a>
-                    </div>
-                </div>
-                <h2><span data-bind="text: userName" class="user-name"></span>'s Order History</h2>
-            </header>
-        </div>
-
-
         <!-- About Views -->
 
         <div data-role="view" id="about-view" data-layout="about-layout" data-title="About" data-model="app.aboutView.viewModel" style="display: none;">
@@ -467,19 +404,6 @@
             </div>
         </div>
 
-        <div data-role="layout" data-id="about-layout" data-platform="android" data-show="app.baseLayout.show">
-            <header data-role="header">
-                <div data-role="navbar">
-                    <a href="#genres-view" class="nav-button" data-align="left" data-role="backbutton"></a>
-                    <span data-role="view-title"></span>
-                    <div data-align="right" class="action-buttons">
-                        <a data-role="button" href="#home-view" data-icon="home"></a>
-                    </div>
-                </div>
-            </header>
-        </div>
-
-
         <!-- Error Views -->
 
         <div data-role="modalview" id="error-view" style="display: none; width: 95%; height: 90%;">
@@ -507,16 +431,6 @@
                 </div>
             </div>
         </div>
-
-        <div data-role="layout" data-id="base-layout" data-show="app.baseLayout.show" data-platform="android">
-            <header data-role="header">
-                <div data-role="navbar">
-                    <a class="nav-button" data-align="left" data-role="backbutton"></a>
-                    <span data-role="view-title"></span>
-                </div>
-            </header>
-        </div>
-
 
         <!-- Templates -->
 
@@ -569,14 +483,13 @@
 
         <!-- Scripts -->
         <script>
+       
             function showHomeView(e) {         
-                /*setTimeout(function() {
-                    $(window).trigger('resize'); 
-                }, 1);*/
                 setTimeout(function() {
-                   $(".km-indexedlistview").trigger('resize');
+                    $(".km-indexedlistview").trigger('resize'); 
                 }, 1);
                 
+                //setTimeout(function () {$(".km-indexedlistview").data("kendoMobileIndexedListView").trigger('refresh');}, 1); 
             }
         </script>
         <script src="scripts/socialsharing-plugin-demo.js"></script>
