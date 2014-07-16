@@ -2,6 +2,7 @@ define(["kendo", "cart", "config"], function (kendo, cart, config) {
     return {
         baseAlbumViewModel: {
             onAddToCart: function (clickEvt) {
+                alert("ere");
                 var album = clickEvt.data;
                 cart.add(album);
 

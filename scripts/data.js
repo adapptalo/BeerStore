@@ -89,7 +89,25 @@ define(["jQuery", "kendo", "config", "utils"], function ($, kendo, config, utils
                 error: function () { utils.hideLoading(); utils.showError("There was an error loading the data from the server. Please close the app and try again."); }
         }),
         
-
+        beersList2: new kendo.data.DataSource({
+                data: beers,
+                group: [{field: "FirstLetter"}],
+                schema: {
+                        parse: function (data) {
+                                $.each(data, function (index, artist) {
+                                        artist.FirstLetter = artist.CERVESERA.substring(0,1).toUpperCase();
+                                        if(artist.FirstLetter.match(/\d/)) {
+                                                artist.FirstLetter = "#"
+                                        }
+                                });
+                                return data;
+                        }
+                },
+                requestStart: function () { if (this.page() === 1) { utils.showLoading(); }},
+                requestEnd: function () { if (this.page() === 1) { utils.hideLoading(); }},
+                error: function () { utils.hideLoading(); utils.showError("There was an error loading the data from the server. Please close the app and try again."); }
+        }),
+        
         albumsList: new EndlessScrollDataSource(new DataSourceConfig(config.albumsUrl + "?$expand=Artist", "Title", {
             serverPaging: true,
             serverFiltering: true,

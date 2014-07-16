@@ -19,7 +19,7 @@
             margin: 0 auto;
             width: 100%;
             height: 100px;
-            background: url(../content/mobile/listview/food.jpg) no-repeat center top;
+            background: url(../Images/food.jpg) no-repeat center top;
             -webkit-background-size: 100% auto;
             background-size: 100% auto;
         }
@@ -32,7 +32,11 @@
         .km-wp-light #genres-view .km-navbar,
         .km-wp-dark #genres-view .km-navbar,
         #genres-view .km-content .km-button {
-            background: url(../content/shared/images/patterns/pattern9.png);
+            background: url(Images/pattern9.png);
+            color: #ffffff;
+        }
+        #body .km-navbar,.km-wp-light .km-navbar, .km-wp-dark #body .km-navbar,#body .km-content .km-button{
+            background: url(Images/pattern9.png);
             color: #ffffff;
         }
 
@@ -45,6 +49,7 @@
             box-shadow: 0 1px 3px #333;
             -webkit-border-radius: 8px;
             border-radius: 8px;
+            background-color: white;
         }
 
         #custom-listview .item-title {
@@ -98,17 +103,17 @@
             text-shadow: none;
         }
 
-        #genres-view .km-group-title h2 {
+        #genres-view .km-group-title {
             color: #974d2e;
             font-weight: normal;
-            font-size: 1.4em;
-            background-image: -moz-linear-gradient(center top , rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.45) 6%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.15) 50%, rgba(100, 100, 100, 0)), url(../content/shared/images/patterns/pattern4.png);
-            background-image: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0, rgba(255, 255, 255, 0.5)), color-stop(0.06, rgba(255, 255, 255, 0.45)), color-stop(0.5, rgba(255, 255, 255, 0.2)), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(1, rgba(100, 100, 100, 0))), url(../content/shared/images/patterns/pattern4.png);
+            //font-size: 1.4em;
+            background-image: -moz-linear-gradient(center top , rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.45) 6%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.15) 50%, rgba(100, 100, 100, 0)), url(Images/pattern4.png);
+            background-image: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0, rgba(255, 255, 255, 0.5)), color-stop(0.06, rgba(255, 255, 255, 0.45)), color-stop(0.5, rgba(255, 255, 255, 0.2)), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(1, rgba(100, 100, 100, 0))), url(Images/pattern4.png);
         }
 
         #genres-view .km-listview .km-list {
             border-top-color: #dcbe87;
-            background-image: url(../content/shared/images/patterns/pattern8.png);
+            background-image: url(Images/pattern8.png);
         }
         .km-tablet .km-ios #genres-view .km-view-title
         {
@@ -127,7 +132,11 @@
             background: transparent;
             color: #fff;
         }
-        .km-ios .km-list > li{font-size: 13px !important}
+        .km-ios .km-list > li{font-size: 13px !important; background: transparent;}
+        #custom-tabstrip, #custom-tabstrip .km-button {
+            background: url("Images/pattern3.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+        }
+        #albums-listview .km-group-title {display: none}
         </style>
 
     </head>
@@ -137,8 +146,8 @@
          
         <!-- Home Views -->
 
-        <div data-role="view" id="genres-view" data-layout="home-layout" data-title="Albums" data-init="showHomeView" data-model="app.artistsView.viewModel" class="km-insetcontent" style="display: none;">
-            <ul id="custom-listview" data-role="indexedlistview" data-bind="source: beersX" data-template="beerTemplate" data-fixed-headers="true"></ul>
+        <div data-role="view" id="genres-view" data-layout="home-layout" data-title="BeerList" data-init="app.artistsView.show" data-model="app.artistsView.viewModel" class="km-insetcontent" style="display: none;">
+            <ul id="custom-listview" data-role="indexedlistview" data-bind="source: beersX" data-template="beer-list-template" data-fixed-headers="true"></ul>
         </div>
         
         <script id="beerTemplate" type="text/x-kendo-template">
@@ -152,7 +161,7 @@
                         <span class="added" data-bind="visible: ordered">Item added to wishlist #= data.ordered # times.</span>                        
                     </a>
         </script>
-        <div data-role="view" data-title="View Title" id="details" style="display: none;" data-transition="overlay:up">
+        <div data-role="view" data-title="View Title" id="details" data-init="showDetailsView" style="display: none;" data-transition="overlay:up">
             <header data-role="header">
                 <div id="fav-list-navbar" data-role="navbar">
                     <a class="nav-button" data-align="left" href="#genres-view" data-transition="overlay:up reverse" data-role="backbutton" >Back</a>
@@ -170,7 +179,7 @@
                 </div>
             </header>
 
-            <ul id="albums-listview" data-role="listview" data-bind="source: albums" data-auto-bind="false" data-template="album-list-template" data-style="inset" data-endless-scroll="true"></ul>
+            <ul id="albums-listview" data-role="listview" data-bind="source: albums" data-template="album2-list-template" data-style="inset"></ul>
         </div>
 
         <div data-role="layout" data-id="home-layout" data-init="app.homeLayout.init" data-show="app.homeLayout.show">
@@ -181,8 +190,8 @@
             </header>
 
             <div data-role="footer">
-                <div data-role="tabstrip">
-                    <a href="#genres-view" data-icon="home">Home</a>
+                <div id="custom-tabstrip" data-role="tabstrip">
+                    <a href="#genres-view" data-icon="home">BeerList</a>
                     <a href="#search-view" data-icon="search">Search</a>
                     <a href="#cart-view" data-icon="cart">Cart<span class="cart-badge km-badge" style="display: none;"></span></a>
                     <a href="#account-view" data-icon="contacts">Account</a>
@@ -209,8 +218,8 @@
                 </div>
             </header>
             <div data-role="footer">
-                <div data-role="tabstrip">
-                    <a href="#genres-view" data-icon="home">Home</a>
+                <div id="custom-tabstrip" data-role="tabstrip">
+                    <a href="#genres-view" data-icon="home">BeerList</a>
                     <a href="#search-view" data-icon="search">Search</a>
                     <a href="#cart-view" data-icon="cart">Cart<span class="cart-badge km-badge" style="display: none;"></span></a>
                     <a href="#account-view" data-icon="contacts">Account</a>
@@ -292,8 +301,8 @@
 
         <div data-role="layout" data-id="cart-layout" data-show="app.cartView.layoutShow" data-platform="ios">
             <div data-role="footer">
-                <div data-role="tabstrip">
-                    <a href="#genres-view" data-icon="home">Home</a>
+                <div id="custom-tabstrip" data-role="tabstrip">
+                    <a href="#genres-view" data-icon="home">BeerList</a>
                     <a href="#search-view" data-icon="search">Search</a>
                     <a href="#cart-view" data-icon="cart">Cart<span class="cart-badge km-badge" style="display: none;"></span></a>
                     <a href="#account-view" data-icon="contacts">Account</a>
@@ -310,8 +319,8 @@
             </header>
 
             <div data-role="footer">
-                <div data-role="tabstrip">
-                    <a href="#genres-view" data-icon="home">Home</a>
+                <div id="custom-tabstrip" data-role="tabstrip">
+                    <a href="#genres-view" data-icon="home">BeerList</a>
                     <a href="#search-view" data-icon="search">Search</a>
                     <a href="#cart-view" data-icon="cart">Cart<span class="cart-badge km-badge" style="display: none;"></span></a>
                     <a href="#account-view" data-icon="contacts">Account</a>
@@ -355,8 +364,8 @@
                 <h2><span data-bind="text: userName" class="user-name"></span>'s Order History</h2>
             </header>
             <div data-role="footer">
-                <div data-role="tabstrip">
-                    <a href="#genres-view" data-icon="home">Home</a>
+                <div id="custom-tabstrip" data-role="tabstrip">
+                    <a href="#genres-view" data-icon="home">BeerList</a>
                     <a href="#search-view" data-icon="search">Search</a>
                     <a href="#cart-view" data-icon="cart">Cart<span class="cart-badge km-badge" style="display: none;"></span></a>
                     <a href="#account-view" data-icon="contacts">Account</a>
@@ -394,8 +403,8 @@
 
         <div data-role="layout" data-id="about-layout" data-show="app.baseLayout.show">
             <div data-role="footer">
-                <div data-role="tabstrip">
-                    <a href="#genres-view" data-icon="home">Home</a>
+                <div id="custom-tabstrip" data-role="tabstrip">
+                    <a href="#genres-view" data-icon="home">BeerList</a>
                     <a href="#search-view" data-icon="search">Search</a>
                     <a href="#cart-view" data-icon="cart">Cart<span class="cart-badge km-badge" style="display: none;"></span></a>
                     <a href="#account-view" data-icon="contacts">Account</a>
@@ -422,8 +431,8 @@
 
         <div data-role="layout" data-id="base-layout" data-show="app.baseLayout.show">
             <div data-role="footer">
-                <div data-role="tabstrip">
-                    <a href="#genres-view" data-icon="home">Home</a>
+                <div id="custom-tabstrip" data-role="tabstrip">
+                    <a href="#genres-view" data-icon="home">BeerList</a>
                     <a href="#search-view" data-icon="search">Search</a>
                     <a href="#cart-view" data-icon="cart">Cart<span class="cart-badge km-badge" style="display: none;"></span></a>
                     <a href="#account-view" data-icon="contacts">Account</a>
@@ -442,6 +451,16 @@
             <a href="\#albums-view?field=ArtistId&operator=eq&value=#=ArtistId#&title=#:encodeURIComponent(Name).replace("'", "%27")#">#=Name#</a>
         </script>
 
+        <script id="beer-list-template" type="text/x-kendo-template">
+            <a style="height:60px" class="details-link2"
+                        data-role="listview-link"
+                        href="\#albums-view?field=B_Id&operator=eq&value=#=B_Id#&title=#:encodeURIComponent(CERVESA).replace("'", "%27")#">
+                        <img class="item-photo" src="Images/beers/#=IMAGEN#" />
+                        <h3 class="item-title">${CERVESERA}</h3>
+                        <span class="item-info">${CERVESA}</span> 
+            </a>
+        </script>
+        
         <script id="album-list-template" type="text/x-kendo-template">
             <img class="album-art" data-bind="attr: {src: albumArtUrl}" />
             <div class="album-cart" data-role="button" data-bind="click: onAddToCart"><span data-bind="text: qtyInCart, attr: {class: buttonClasses}"></span><span class="km-icon km-cart"></span></div>
@@ -450,6 +469,15 @@
             <span class="album-price" data-bind="text: albumPrice"></span>
         </script>
 
+        <script id="album2-list-template" type="text/x-kendo-template">
+            <img class="album-art"  src="Images/beers/#=IMAGEN#" />  
+            <div class="album-cart" data-role="button" data-bind="click: onAddToCart"><span data-bind="text: qtyInCart, attr: {class: buttonClasses}"></span><span class="km-icon km-cart"></span></div>
+            <button class="details-link km-widget km-button" style="float:right" onclick="socialsharingDemo()">SocialSharing</button>
+            <h1 class="album-title">${CERVESERA}</h1>
+            <h2 class="album-artist">${CERVESA}</h2>
+            <span class="album-price">${DESCRIPCIO}</span>
+        </script>
+        
         <script id="artist-filter-template" type="text/x-kendo-template">
             <a href="\#artists-view?value=#=data#" id="#=data#">#=data#</a>
         </script>
@@ -484,8 +512,14 @@
         <!-- Scripts -->
         <script>
        
-            function showHomeView(e) {         
-               setTimeout(function () {app.artistsView.viewModel.beersX.filter([]);}, 1); 
+            function showDetailsView(e) {
+                alert(JSON.stringify(app.artistsView.viewModel.beersX));
+                var id = parseInt(e.view.params.B_Id);
+                   item = app.artistsView.viewModel.beersX.get(id);
+                   //console.log(item);
+                    //alert(item);
+                //viewModel.set("currentItem", item);
+
             }
         </script>
         <script src="scripts/socialsharing-plugin-demo.js"></script>
