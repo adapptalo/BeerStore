@@ -4,16 +4,17 @@ define(["kendo", "cart", "config"], function (kendo, cart, config) {
             onSocial:function(e){
                  var album = e.data;
                  //alert(JSON.stringify(album));
-                 socialsharingDemo();
+                 //alert(album.CERVESA+"@"+album.IMAGEN);
+                 socialsharingDemo(album.IMAGEN,album.CERVESA,album.CERVESERA);
             },
             onAddToCart: function (clickEvt) {
                 var album = clickEvt.data;
                 cart.add(album);
-
                 // force refresh of data bindings.
                 var aid = album.get("B_Id");
                 album.set("B_Id", -1);
                 album.set("B_Id", aid);
+                //alert(JSON.stringify(cart));
             },
             albumPrice: function (album) {
                 return kendo.toString(parseFloat(album.get("ESTIL")), "c");

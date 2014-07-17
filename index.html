@@ -170,7 +170,7 @@
                 </div>
             </header>
 
-            <ul id="albums-listview" data-role="listview" data-bind="source: albums" data-template="album2-list-template" data-style="inset"></ul>
+            <ul style="margin-top:50px" id="albums-listview" data-role="listview" data-bind="source: albums" data-template="album2-list-template" data-style="inset"></ul>
             
         </div>
 
@@ -230,7 +230,7 @@
                     <a data-role="button" href="#checkout-view" data-align="right" data-bind="visible: cartHasItems">Checkout</a>
                 </div>
                 <h3>Swipe to Remove Item</h3>
-                <h1>TOTAL: <span class="total" data-bind="text: cart.aggregates.formattedTotal"></span></h1>
+                <h1>¡¿Que sean ... <span class="total" data-bind="text: cart.aggregates.formattedTotal"></span>!!</h1>
             </header>
 
             <ul data-role="listview" data-bind="source: items" data-template="cart-list-template" data-style="inset"></ul>
@@ -451,6 +451,7 @@
                         <h3 class="item-title">${CERVESERA}</h3>
                         <span class="item-info">${CERVESA}</span>
                         <span class="item-info">ABV:${ABV} IBU:${IBU}</span> 
+                        <span class="added" data-bind="visible: ordered">Item added to wishlist #= data.ordered # times.</span> 
             </a>
         </script>
         
@@ -480,6 +481,19 @@
         </script>
 
         <script id="cart-list-template" type="text/x-kendo-template">
+            <div data-role="touch" data-enable-swipe="1" data-swipe="app.cartView.onToggleDeleteMode" data-hold="app.cartView.onToggleDeleteMode">
+                <div class="qty-and-price">
+                    <strong data-bind="invisible: deleteMode">Qty</strong>
+                    <input type="number" data-bind="value: qty, invisible: deleteMode" min="1" max="99" />
+                    <span class="cart-delete-button" data-role="button" data-click="app.cartView.onRemove" data-bind="visible: deleteMode" data-icon="trash"></span>
+                </div>
+                <img class="album-art" src="Images/beers/#=album.IMAGEN#" />
+                <h1 class="album-title">#=album.CERVESERA#</h1>
+                <h2 class="album-artist">#=album.CERVESA#</h2>
+            </div>
+        </script>
+        
+        <script id="cart2-list-template" type="text/x-kendo-template">
             <div data-role="touch" data-enable-swipe="1" data-swipe="app.cartView.onToggleDeleteMode" data-hold="app.cartView.onToggleDeleteMode">
                 <div class="qty-and-price">
                     <strong data-bind="invisible: deleteMode">Qty</strong>
