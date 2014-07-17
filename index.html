@@ -449,7 +449,8 @@
                         href="\#albums-view?field=B_Id&operator=eq&value=#=B_Id#&title=#:encodeURIComponent(CERVESA).replace("'", "%27")#">
                         <img class="item-photo" src="Images/beers/#=IMAGEN#" />
                         <h3 class="item-title">${CERVESERA}</h3>
-                        <span class="item-info">${CERVESA}</span> 
+                        <span class="item-info">${CERVESA}</span>
+                        <span class="item-info">ABV:${ABV} IBU:${IBU}</span> 
             </a>
         </script>
         
@@ -465,9 +466,13 @@
             <img class="album-art"  src="Images/beers/#=IMAGEN#" />  
             <h1 class="album-title">${CERVESERA}</h1>
             <h2 class="album-artist">${CERVESA}</h2>
-            <span class="album-price">${DESCRIPCIO}</span>
+            <p class="album-artist"><span class="km-icon km-globe" style="color:black;margin:0px;"></span>${PROCEDENCIA}</p>
+            <p class="album-price">
+            Estil:${ESTIL}            ABV:${ABV}            IBU:${IBU}
+            </p>
+            <p class="album-price">${DESCRIPCIO}</p>
             <div class="album-cart" data-role="button" data-bind="click: onAddToCart"><span data-bind="text: qtyInCart, attr: {class: buttonClasses}"></span><span class="km-icon km-cart"></span></div>
-            <button class="details-link km-widget km-button" style="float:left" data-bind="click:onSocial">SocialSharing</button>            
+            <div class="socialButton" data-role="button" style="float:left" data-bind="click: onSocial">SocialSharing</div>            
         </script>
         
         <script id="artist-filter-template" type="text/x-kendo-template">
