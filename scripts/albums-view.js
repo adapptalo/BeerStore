@@ -19,8 +19,7 @@ define(["kendo", "data", "utils", "cart", "albums"], function (kendo, data, util
             utils.setViewTitle(e.sender.element, filter.title);
             utils.scrollViewToTop(e.sender.element);
             data.clear(data.beersList2);
-            data.beersList2.filter(filter);
-
+            data.beersList2.filter(filter);           
             _createAlbumsListView();
         }
     }
